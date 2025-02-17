@@ -40,7 +40,9 @@ export class AppService {
   @Cron(CronExpression.EVERY_MINUTE)
   async syncCollections() {
     console.log('STARTED CRON: syncCollections');
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
     const page = await browser.newPage();
     const result = await page.evaluate(() => {
       const request = (cursor) =>
