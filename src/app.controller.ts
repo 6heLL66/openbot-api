@@ -18,6 +18,6 @@ export class AppController {
       collections: Database['public']['Tables']['collections']['Insert'][];
     },
   ) {
-    await this.appService.loadCollections(body.collections);
+    return this.appService.loadCollections(body.collections);
   }
 }

@@ -32,6 +32,6 @@ export class AppService {
   async loadCollections(
     collections: Database['public']['Tables']['collections']['Insert'][],
   ) {
-    await this.supabase.from('collections').upsert(collections);
+    return this.supabase.from('collections').upsert(collections);
   }
 }
