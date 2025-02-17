@@ -39,6 +39,7 @@ export class AppService {
 
   @Cron(CronExpression.EVERY_10_MINUTES)
   async syncCollections() {
+    console.log('STARTED CRON: syncCollections');
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     const result = await page.evaluate(() => {
@@ -104,6 +105,8 @@ export class AppService {
     });
 
     await browser.close();
+
+    console.log('FINISHED CRON: collections count: ', result.length);
 
     if (result.length > 500) {
       await this.loadCollections(result);
