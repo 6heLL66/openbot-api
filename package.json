@@ -11,6 +11,7 @@
     "start": "nest start",
     "dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
+    "generate-db-types": "npx supabase gen types typescript --project-id \"cuxlcoqzfagvmoyqmqht\" --schema public > src/types/supabase.ts && npx prettier -w ./src",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",

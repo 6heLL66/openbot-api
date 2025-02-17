@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Database } from './types/supabase';
 
 @Controller()
 export class AppController {
@@ -10,8 +11,13 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('collections')
-  getCollections(): Promise<any> {
-    return this.appService.getNftCollections();
+  @Post('load-collections')
+  async loadCollections(
+    @Body()
+    body: {
+      collections: Database['public']['Tables']['collections']['Insert'][];
+    },
+  ) {
+    await this.appService.loadCollections(body.collections);
   }
 }

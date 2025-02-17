@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { Chain, OpenSeaSDK } from 'opensea-js';
+import { Chain, CollectionOrderByOption, OpenSeaSDK } from 'opensea-js';
+import { Database } from './types/supabase';
 
 @Injectable()
 export class AppService {
@@ -28,9 +29,9 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async getNftCollections() {
-    const list = await this.openseaSDK.api.getCollections();
-
-    return list;
+  async loadCollections(
+    collections: Database['public']['Tables']['collections']['Insert'][],
+  ) {
+    await this.supabase.from('collections').upsert(collections);
   }
 }

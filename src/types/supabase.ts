@@ -44,6 +44,42 @@ export type Database = {
           },
         ];
       };
+      collections: {
+        Row: {
+          chain_identifier: string;
+          chain_name: string;
+          created_at: string;
+          id: string;
+          imageUrl: string | null;
+          importanceWeight: number;
+          isVerified: boolean;
+          name: string;
+          slug: string | null;
+        };
+        Insert: {
+          chain_identifier: string;
+          chain_name: string;
+          created_at?: string;
+          id: string;
+          imageUrl?: string | null;
+          importanceWeight: number;
+          isVerified: boolean;
+          name: string;
+          slug?: string | null;
+        };
+        Update: {
+          chain_identifier?: string;
+          chain_name?: string;
+          created_at?: string;
+          id?: string;
+          imageUrl?: string | null;
+          importanceWeight?: number;
+          isVerified?: boolean;
+          name?: string;
+          slug?: string | null;
+        };
+        Relationships: [];
+      };
       logs: {
         Row: {
           created_at: string;
@@ -211,8 +247,8 @@ export type TablesUpdate<
 
 export type Enums<
   PublicEnumNameOrOptions extends
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    keyof PublicSchema['Enums'] | { schema: keyof Database },
+    | keyof PublicSchema['Enums']
+    | { schema: keyof Database },
   EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
     ? keyof Database[PublicEnumNameOrOptions['schema']]['Enums']
     : never = never,
@@ -224,8 +260,8 @@ export type Enums<
 
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    keyof PublicSchema['CompositeTypes'] | { schema: keyof Database },
+    | keyof PublicSchema['CompositeTypes']
+    | { schema: keyof Database },
   CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
     schema: keyof Database;
   }
