@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "node dist/server",
     "dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "generate-db-types": "npx supabase gen types typescript --project-id \"cuxlcoqzfagvmoyqmqht\" --schema public > src/types/supabase.ts && npx prettier -w ./src",
@@ -28,7 +28,6 @@
     "@nestjs/swagger": "^11.0.3",
     "@supabase/supabase-js": "^2.48.1",
     "ethers": "^6.13.5",
-    "nest": "^0.1.6",
     "opensea-js": "^7.1.16",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
