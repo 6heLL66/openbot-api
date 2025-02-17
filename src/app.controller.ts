@@ -14,10 +14,8 @@ export class AppController {
   @Post('load-collections')
   async loadCollections(
     @Body()
-    body: {
-      collections: Database['public']['Tables']['collections']['Insert'][];
-    },
+    body: Database['public']['Tables']['collections']['Insert'][],
   ) {
-    return this.appService.loadCollections(body.collections);
+    return this.appService.loadCollections(body);
   }
 }
