@@ -37,7 +37,7 @@ export class AppService {
     return 'Hello World!';
   }
 
-  @Cron(CronExpression.EVERY_10_MINUTES)
+  @Cron(CronExpression.EVERY_MINUTE)
   async syncCollections() {
     console.log('STARTED CRON: syncCollections');
     const browser = await puppeteer.launch();
