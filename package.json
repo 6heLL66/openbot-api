@@ -28,6 +28,7 @@
     "@nestjs/swagger": "^11.0.3",
     "@supabase/supabase-js": "^2.48.1",
     "ethers": "^6.13.5",
+    "nest": "^0.1.6",
     "opensea-js": "^7.1.16",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
