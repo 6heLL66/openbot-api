@@ -9,6 +9,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "node dist/main.js",
+    "heroku-postbuild": "bash postbuild.bash",
     "dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "generate-db-types": "npx supabase gen types typescript --project-id \"cuxlcoqzfagvmoyqmqht\" --schema public > src/types/supabase.ts && npx prettier -w ./src",
